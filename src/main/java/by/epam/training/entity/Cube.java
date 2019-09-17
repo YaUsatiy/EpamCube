@@ -2,8 +2,8 @@ package by.epam.training.entity;
 
 import by.epam.training.generator.IdGenerator;
 import by.epam.training.observer.CubeEvent;
-import by.epam.training.observer.CubeObserver;
 import by.epam.training.observer.CubeObservable;
+import by.epam.training.observer.CubeObserver;
 import by.epam.training.service.ServiceException;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -18,11 +18,7 @@ public class Cube implements CubeObservable {
     private static final int CUBE_POINTS_COUNT = 8;
     private List<CubeObserver> observerList = new ArrayList<>();
 
-    public Cube(List<Point> points) throws EntityException {
-        if (points.size() != CUBE_POINTS_COUNT) {
-            log.error("INCORRECT NUMBER OF POINTS OF CUBE");
-            throw new EntityException("INCORRECT NUMBER OF POINTS OF CUBE");
-        }
+    public Cube(List<Point> points) {
         this.cubeId = IdGenerator.generateId();
         this.points = points;
     }

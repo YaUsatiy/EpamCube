@@ -36,7 +36,7 @@ public class CubeServiceTest {
     }
 
     @Test
-    public void testIsCube() {
+    public void testIsCube() throws EntityException {
         boolean actualValue = cubeService.isCube(cube);
         assertTrue(actualValue);
     }

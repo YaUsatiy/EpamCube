@@ -1,6 +1,7 @@
 package by.epam.training.service;
 
 import by.epam.training.entity.Cube;
+import by.epam.training.entity.EntityException;
 import by.epam.training.entity.Point;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -10,6 +11,7 @@ import java.util.List;
 public class CubeService {
     private static final Logger log = LogManager.getLogger(CubeService.class);
     private static CubeService instance = new CubeService();
+    private static final int CUBE_POINTS_COUNT = 8;
     private static final int SAME_AXIS_COORDINATE_COUNT = 4;
     private static final int CUBE_PLANE_COUNT = 6;
     private static final int CUBE_RIB_COUNT = 12;
@@ -21,8 +23,12 @@ public class CubeService {
         return instance;
     }
 
-    public boolean isCube(Cube cube) {
+    public boolean isCube(Cube cube) throws EntityException {
         List<Point> cubePoints = cube.getPoints();
+        if (cubePoints.size() != CUBE_POINTS_COUNT) {
+            log.error("INCORRECT NUMBER OF POINTS OF CUBE");
+            throw new EntityException("INCORRECT NUMBER OF POINTS OF CUBE");
+        }
         for (int i = 0; i < cubePoints.size(); i++) {
             int sameX = 1;
             int sameY = 1;

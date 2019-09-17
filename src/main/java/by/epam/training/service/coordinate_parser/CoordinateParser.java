@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 public class CoordinateParser {
     private static final Logger log = LogManager.getLogger(CoordinateParser.class);
 
-    public List<String> parse1(String pathToFile) throws Exception {
+    public List<String> parse1(String pathToFile) throws Exception { // FIXME: 17.09.2019
         if (pathToFile == null) {
             log.error("NULL PATH TO FILE IN READ METHOD");
             throw new ServiceException("NULL PATH TO FILE IN READ METHOD");
