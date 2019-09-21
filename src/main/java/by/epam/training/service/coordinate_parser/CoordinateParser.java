@@ -9,30 +9,9 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class CoordinateParser {
     private static final Logger log = LogManager.getLogger(CoordinateParser.class);
-
-    public List<String> parse1(String pathToFile) throws Exception { // FIXME: 17.09.2019
-        if (pathToFile == null) {
-            log.error("NULL PATH TO FILE IN READ METHOD");
-            throw new ServiceException("NULL PATH TO FILE IN READ METHOD");
-        }
-        List<String> pointsList;
-        Path path = Paths.get(getClass().getResource(pathToFile).toURI());
-        try (Stream<String> lineStream = Files.newBufferedReader(path).lines()) {
-            pointsList = lineStream.collect(Collectors.toList());
-            if (pointsList.isEmpty()) {
-                log.error("Please, check your data!");
-            }
-            return pointsList;
-        } catch (IOException e) {
-            throw new ServiceException("ERROR WHILE READING FILE: " + pathToFile, e);
-        }
-    }
 
     public String parse(String pathToFile) throws ServiceException {
         if (pathToFile == null) {
@@ -45,6 +24,8 @@ public class CoordinateParser {
             content = new String(Files.readAllBytes(path));
         } catch (IOException | URISyntaxException e) {
             throw new ServiceException("ERROR WHILE READING FILE: " + pathToFile, e);
+        } catch (Exception e) {
+            throw new ServiceException("UNEXPECTED ERROR WITH PATH: " + pathToFile, e);
         }
         if (content.equals("")) {
             log.error("Please, check your data!");

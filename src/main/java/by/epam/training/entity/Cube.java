@@ -5,16 +5,13 @@ import by.epam.training.observer.CubeEvent;
 import by.epam.training.observer.CubeObservable;
 import by.epam.training.observer.CubeObserver;
 import by.epam.training.service.ServiceException;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cube implements CubeObservable {
-    private static final Logger log = LogManager.getLogger(Cube.class);
-    private List<Point> points;
     private long cubeId;
+    private List<Point> points;
     private static final int CUBE_POINTS_COUNT = 8;
     private List<CubeObserver> observerList = new ArrayList<>();
 
@@ -52,7 +49,7 @@ public class Cube implements CubeObservable {
             return false;
         }
         final Cube otherCube = (Cube) other;
-        if (getCubeId() != otherCube.getCubeId()) return false;
+        /*if (getCubeId() != otherCube.getCubeId()) return false;*/
         int counter = 0;
         for (Point point : points) {
             for (Point otherPoint : otherCube.getPoints()) {
@@ -71,7 +68,7 @@ public class Cube implements CubeObservable {
         for (Point point : points) {
             result += point.hashCode();
         }
-        result = (int) (prime * result + cubeId);
+        /*result = (int) (prime * result + cubeId);*/
         return result;
     }
 

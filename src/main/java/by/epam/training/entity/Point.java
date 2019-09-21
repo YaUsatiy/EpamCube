@@ -3,10 +3,10 @@ package by.epam.training.entity;
 import by.epam.training.generator.IdGenerator;
 
 public class Point {
+    private long pointId;
     private final int x;
     private final int y;
     private final int z;
-    private long pointId;
 
     public Point(int x, int y, int z) {
         this.pointId = IdGenerator.generateId();
@@ -40,7 +40,7 @@ public class Point {
             return false;
         }
         final Point otherPoint = (Point) other;
-        return pointId == otherPoint.pointId &&
+        return /*pointId == otherPoint.pointId &&*/
                 x == otherPoint.x &&
                 y == otherPoint.y &&
                 z == otherPoint.z;
@@ -53,7 +53,7 @@ public class Point {
         result = prime * result + x;
         result = prime * result + y;
         result = prime * result + z;
-        result = (int) (prime * result + pointId);
+        /*result = (int) (prime * result + pointId);*/
         return result;
     }
 

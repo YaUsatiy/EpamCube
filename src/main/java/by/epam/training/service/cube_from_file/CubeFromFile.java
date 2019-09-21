@@ -1,7 +1,6 @@
 package by.epam.training.service.cube_from_file;
 
 import by.epam.training.entity.Cube;
-import by.epam.training.entity.EntityException;
 import by.epam.training.entity.Point;
 import by.epam.training.service.ServiceException;
 import by.epam.training.service.coordinate_parser.CoordinateParser;
@@ -17,7 +16,7 @@ public class CubeFromFile {
     private static final String COORDINATE_DELIMITER = ",\\s*";
     private static final Logger log = LogManager.getLogger(CubeFromFile.class);
 
-    public static Cube createCube(String pathToFile) throws ServiceException, EntityException {
+    public static Cube createCube(String pathToFile) throws ServiceException {
         CoordinateParser coordinateParser = new CoordinateParser();
         String coordinatesFromFile = coordinateParser.parse(pathToFile);
         if (!CoordinateValidator.validate(coordinatesFromFile)) {
