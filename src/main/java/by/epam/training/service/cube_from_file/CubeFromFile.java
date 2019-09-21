@@ -20,8 +20,8 @@ public class CubeFromFile {
         CoordinateParser coordinateParser = new CoordinateParser();
         String coordinatesFromFile = coordinateParser.parse(pathToFile);
         if (!CoordinateValidator.validate(coordinatesFromFile)) {
-            log.error("Coordinates are not valid!");
-            throw new ServiceException("Coordinates are not valid!");
+            log.error("Coordinates are not valid!!");
+            throw new ServiceException("Coordinates are not valid!!");
         }
         String[] points = coordinatesFromFile.split(POINT_DELIMITER);
         Point point1 = createPoint(points[0]);
